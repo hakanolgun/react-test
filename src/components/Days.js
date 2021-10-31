@@ -3,12 +3,15 @@ import { useContext } from "react";
 import WeatherContext from "../context/WeatherContext";
 
 export default function Days() {
-  const { weatherData } = useContext(WeatherContext);
+  const { weatherData, client, clientWeather } = useContext(WeatherContext);
   const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  const data = client ? clientWeather : weatherData;
+
   return (
     <div>
-      {weatherData.map((day, i) => (
-        <div className={styles.dayDiv}>
+      {data.map((day, i) => (
+        <div key={i} className={styles.dayDiv}>
           <p>{days[new Date(day.dt * 1000).getDay()]}</p>
           <img
             src={`http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`}
