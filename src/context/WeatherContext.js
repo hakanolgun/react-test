@@ -5,8 +5,7 @@ const WeatherContext = createContext();
 
 export const WeatherProvider = ({ children }) => {
   const apiKey = process.env.REACT_APP_API_KEY;
-
-  const [city, setCity] = useState(cities[54]);
+  const [city, setCity] = useState(cities[33]);
   const [weatherData, setWeatherData] = useState([]);
 
   useEffect(() => {
